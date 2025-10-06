@@ -27,12 +27,13 @@ const PORT = process.env.PORT || 5000;
  * - Connection string format: mongodb://localhost:27017/database-name
  * - We'll move this to config/database.js later
  */
-mongoose.connect('mongodb://localhost:27017/express_single_file_demo', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => console.log('✅ MongoDB Connected Successfully'))
-.catch(err => console.log('❌ MongoDB Connection Error:', err));
+// ✅ MODERN WAY (Mongoose 6.x and above):
+mongoose.connect('mongodb://localhost:27017/express_single_file_demo')
+  .then(() => console.log('✅ MongoDB Connected'))
+  .catch(err => console.log('❌ Connection Error:', err));
+
+// These options are now enabled by default in Mongoose 6+
+// You'll get warnings if you try to use them
 
 // ============================================================================
 // 📊 MODELS (Data Layer - M in MVC)
